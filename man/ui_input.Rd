@@ -2,26 +2,20 @@
 % Please edit documentation in R/ui_input.R
 \name{ui_input}
 \alias{ui_input}
-\title{Creates user interface input for Shiny app}
+\title{Creates reactive input for Shiny app}
 \usage{
-ui_input(data, input_type, input_id, input_label)
+ui_input(input_type, input_id, data)
 }
 \arguments{
-\item{data}{A data frame}
-
 \item{input_type}{Character string specifying type of input, "date" or "state"}
 
 \item{input_id}{A string specifying the label Id}
 
-\item{input_label}{A string specifying the label name for the reactive input}
+\item{data}{A data frame}
 }
 \value{
 Creates a reactive slider/picker input for Shiny App
 }
 \description{
-Creates user interface input for Shiny app
-}
-\examples{
-ui_input("date", "choose_dates", us_tests_map, "Choose a Date")
-
+Creates reactive input for Shiny app
 }
