@@ -19,7 +19,9 @@ Depends:
 Imports: 
     shiny,
     shinyWidgets,
-    ggplot2
+    ggplot2,
+    dplyr,
+    tibble
 Suggests: 
     knitr,
     rmarkdown,
