@@ -2,7 +2,7 @@
 #'
 #'
 #' @return
-#' A Shiny App
+#' A Shiny App embedded in the package
 #'
 #'
 #' @export

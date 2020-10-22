@@ -7,7 +7,7 @@
 launch_app()
 }
 \value{
-A Shiny App
+A Shiny App embedded in the package
 }
 \description{
 Load Shiny Application from inst/app directory
