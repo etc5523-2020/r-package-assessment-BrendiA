@@ -1,6 +1,6 @@
 
 
-#' Title
+#' Creates error message if Shiny App input is empty
 #'
 #' @param input Shiny user-interface input
 #'
@@ -8,14 +8,12 @@
 #'
 #' @export
 #'
-#' @examples
-#' error_msg(input$choose_states, plot_type == "map")
 
 error_msg <- function(input, plot_type){
   if(plot_type == "map") {
-  validate(need(input != "", "Hello there, be sure to add a state or you'd run into an error"))
+  shiny::validate(shiny::need(input != "", "Hello there, be sure to add a state or you'd run into an error"))
   } else if(plot_type == "bar") {
-    validate(need(input != "", ""))
+    shiny::validate(shiny::need(input != "", ""))
     }
 }
 

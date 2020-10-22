@@ -2,7 +2,7 @@
 % Please edit documentation in R/error_msg.R
 \name{error_msg}
 \alias{error_msg}
-\title{Title}
+\title{Creates error message if Shiny App input is empty}
 \usage{
 error_msg(input, plot_type)
 }
@@ -13,8 +13,5 @@ error_msg(input, plot_type)
 Error message if condition(s) are not met
 }
 \description{
-Title
-}
-\examples{
-error_msg(input$choose_states, plot_type == "map")
+Creates error message if Shiny App input is empty
 }
