@@ -19,7 +19,7 @@ ui_input <- function(input_type, input_id, data){
                 label = "Choose a Date",
                 min = min(data$date),
                 max = max(data$date),
-                value = max_date)
+                value = max(data$date))
 
   } else if(input_type == "state"){
 
