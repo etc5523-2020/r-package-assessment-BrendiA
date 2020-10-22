@@ -3,18 +3,14 @@
 
 library(tidyverse)
 library(covid19usa)
+library(DT)
+library(plotly)
 library(shiny)
 library(shinythemes)
 library(shinyWidgets)
-library(readr)
-library(usmap)
-library(stringr)
-library(DT)
-library(plotly)
 library(shinycssloaders)
 
 options(spinner.color = "#c1adea") # Choose Spinner colour
-
 
 # ------------------------------------------------------------------------------------------------------------------#
 # ---------------------------------------------------- Load Data ---------------------------------------------------#
