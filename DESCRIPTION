@@ -20,3 +20,7 @@ Imports:
     shiny,
     shinyWidgets,
     ggplot2
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
