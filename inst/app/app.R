@@ -39,11 +39,11 @@ covid19usa::tests_raw
 
 # -------------------------------------------- Join Datasets ----------------------------------------------------
 
-## Include GPS coordinates for each state for plotting map
+## Include geographical coordinates for each state for plotting map
 covid_map <- covid_us_states %>%
   left_join(us_states_map, by = "fips")
 
-## Include pop estimates in US-testing data --------------------------------------------
+## Include population estimates in US-testing data --------------------------------------------
 us_state_tests <- covid_map %>%
   distinct(abbr, population, state) %>%
   right_join(tests_raw, by = c("abbr" = "state"))
