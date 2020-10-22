@@ -1,6 +1,6 @@
 ## code to prepare `tests_raw` dataset goes here
 
-# ------------ U.S Covid-19 Testing Dataset ---------------
+# ------------ U.S States Covid-19 Testing Dataset ---------------
 
 library(readr)
 library(dplyr)

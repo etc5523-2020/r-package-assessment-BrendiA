@@ -35,8 +35,9 @@ covid_us_states <- covid_us_states %>%
 
 # Find cases per million
 covid_us_states <- covid_us_states %>%
-  mutate(cases_per_mil = round(cases * (1000000 / population), 2),
-         deaths_per_mil = round(deaths * (1000000 / population), 2)
+  mutate(cases_per_hnd = round(cases * (100000 / population), 2),
+         deaths_per_hnd = round(deaths * (100000 / population), 2)
   )
+
 
 usethis::use_data(covid_us_states, overwrite = TRUE)
