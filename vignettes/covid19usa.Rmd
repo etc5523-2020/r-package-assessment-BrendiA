@@ -17,3 +17,31 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(covid19usa)
 ```
+
+# How to launch the App
+
+The Shiny web application can be launched with a single line of code:
+
+```{r launch-app, eval = FALSE}
+launch_app()
+```
+
+# What the App Does
+
+## The Datasets
+
+```{r}
+covid19usa::covid_us_states %>% tibble
+covid19usa::tests_raw
+covid19usa::us_pop_ests
+covid19usa::us_states_map
+```
+
+The package uses the Covid-19 datasets from (Source: [New York Times](https://github.com/nytimes/covid-19-data)) and 
+
+# Guidelines 
+
+
+
+
+
