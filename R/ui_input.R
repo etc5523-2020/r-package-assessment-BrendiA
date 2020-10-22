@@ -14,12 +14,15 @@
 
 ui_input <- function(input_type, input_id, data){
   if(input_type == "date"){
+
     sliderInput(inputId = input_id,
                 label = "Choose a Date",
                 min = min(data$date),
                 max = max(data$date),
-                value = max(data$date))
+                value = max_date)
+
   } else if(input_type == "state"){
+
     pickerInput(inputId = input_id,
                 label = "Choose state(s)",
                 choices = sort(unique(data$state)),
