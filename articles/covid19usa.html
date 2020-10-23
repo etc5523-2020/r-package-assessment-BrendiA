@@ -43,6 +43,9 @@
 <li>
   <a href="../articles/covid19usa.html">Get started</a>
 </li>
+<li>
+  <a href="../articles/covid19usa.html">Vignette</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -62,7 +65,8 @@
       
 
       </header><script src="covid19usa_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="covid19usa_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="covid19usa_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+<script src="covid19usa_files/anchor-sections-1.0/anchor-sections.js"></script><script src="covid19usa_files/kePrint-0.0.1/kePrint.js"></script><link href="covid19usa_files/lightable-0.0.1/lightable.css" rel="stylesheet">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to covid19usa R package</h1>
@@ -75,98 +79,337 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/etc5523-2020/r-package-assessment-BrendiA">covid19usa</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span></pre></div>
-<div id="getting-started-launching-the-app" class="section level1">
+<div id="getting-started" class="section level1">
 <h1 class="hasAnchor">
-<a href="#getting-started-launching-the-app" class="anchor"></a>Getting Started: Launching the App</h1>
-<p>The Shiny web application can be launched with a single line of code:</p>
+<a href="#getting-started" class="anchor"></a>Getting Started</h1>
+<p>Essentially, the <code>covid19usa</code> package serves as a container for a Shiny Application. This vignette will describe how you can launch the application, and outline the analysis you can do with the app. It will also describe the additional datasets and functions embedded in the R package.</p>
+<div id="launching-the-shiny-application" class="section level2">
+<h2 class="hasAnchor">
+<a href="#launching-the-shiny-application" class="anchor"></a>Launching the Shiny Application</h2>
+<p>Prior to launching the application, you are required to load/download the R package:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/etc5523-2020/r-package-assessment-BrendiA">covid19usa</a></span><span class="op">)</span> <span class="co"># devtools::install_github("etc5523-2020/r-package-assessment-BrendiA")</span></pre></div>
+<p>Next, the Shiny web application can be launched with a single line of code:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="fu"><a href="../reference/launch_app.html">launch_app</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 </div>
-<div id="what-the-app-does" class="section level1">
+</div>
+<div id="using-the-shiny-application" class="section level1">
 <h1 class="hasAnchor">
-<a href="#what-the-app-does" class="anchor"></a>What the App Does</h1>
-<div id="the-datasets" class="section level2">
+<a href="#using-the-shiny-application" class="anchor"></a>Using the Shiny Application</h1>
+<div id="about" class="section level2">
 <h2 class="hasAnchor">
-<a href="#the-datasets" class="anchor"></a>The Datasets</h2>
-<p>The package retrieves Covid-19 datasets from <a href="https://github.com/nytimes/covid-19-data">The New York Times</a>) and <a href="https://covidtracking.com/data">Covidtracking.com</a>. These datasets are combined with the U.S map data to provide an interactive map and other data visualisations to allow users to explore Covid-19 cases across the U.S. Several interactive features are included to allow for a more personalised information with the ability to manoeuvre between dates and states across U.S.</p>
-<p>The datasets can be retrieved with theses functions embedded in the package:</p>
+<a href="#about" class="anchor"></a>About</h2>
+<p>The Shiny app open with an ‘About’ tab. It establishes the purpose of the Shiny app, the source and references used to produce the application.</p>
+</div>
+<div id="comparing-confirmed-covid-19-cases-per-100000-population-across-u-s-states" class="section level2">
+<h2 class="hasAnchor">
+<a href="#comparing-confirmed-covid-19-cases-per-100000-population-across-u-s-states" class="anchor"></a>Comparing Confirmed Covid-19 Cases (per 100,000 Population) across U.S States</h2>
+<video width="720" height="400" controls><source src="tab1_example.mp4" type="video/mp4"></source></video><p>The first component of the application allows you to compare the total number of confirmed Covid-19 cases (per 100,000 population) reported by each U.S state. As the video suggests, the slider input and the input slots allow you to manoeuvre between each date and the different U.S states respectively for a more tailored analysis.</p>
+<p>The interactive Choropleth map is implemented with a sequential colour scale to establish the geographical location of the states with the highest total confirmed cases on a given date. Additionally, this trend is also plotted on a histogram on the sidebar panel, as the comparison between states can be better articulated since people are generally better at comparing lengths on a common scale as compared to shading or colour saturations.</p>
+<p>When you hover your mouse over to a state on the map, you will retrieve the following:</p>
+<ul>
+<li><p>Date</p></li>
+<li><p>State</p></li>
+<li><p>Total cases (per 100,000 population)</p></li>
+<li><p>Total deaths (per 100,000 population)</p></li>
+<li><p>Population</p></li>
+</ul>
+</div>
+<div id="positive-covid-19-cases-found-via-covid-19-testing" class="section level2">
+<h2 class="hasAnchor">
+<a href="#positive-covid-19-cases-found-via-covid-19-testing" class="anchor"></a>Positive Covid-19 Cases found via Covid-19 Testing</h2>
+<video width="720" height="400" controls><source src="tab2_example.mp4" type="video/mp4"></source></video><p>The last component of the app allows you to examine the positive cases declared as a result of testing across each U.S states. Like in the previous tab, you can access the slider input and input slots to select dates and U.S. states respectively.</p>
+<p>This component consists of two tabs. The first tab, looks at the daily positive cases found through Covid-19 testing on a given date (<em>i.e.</em> daily basis), and like the previous component, an interactive Choropleth map and the corresponding bar chart is plotted. The other tab illustrates the accumulated positive cases found through testing on an interactive table. This allows for easy comparison between daily and accumulated cases. To note, occasional anomalies (e.g. significant drop in tests) can be seen generally due to case definitions and non-reporting.</p>
+<p>When you hover your mouse over to a state on the Choropleth map, you will retrieve the following:</p>
+<ul>
+<li><p>Date</p></li>
+<li><p>State</p></li>
+<li><p>Tests conducted</p></li>
+<li><p>New cases</p></li>
+<li><p>Proportion of Covid-19 tests returning positive</p></li>
+</ul>
+<p>A snippet of the variables included DT table is charted below:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="va">covid_us_states</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span> 
-<span class="co">#&gt; # A tibble: 11,904 x 8</span>
-<span class="co">#&gt;    date       state   fips  cases deaths population cases_per_hnd deaths_per_hnd</span>
-<span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 2020-01-21 Washin… 53        1      0    7614893          0.01              0</span>
-<span class="co">#&gt;  2 2020-01-22 Washin… 53        1      0    7614893          0.01              0</span>
-<span class="co">#&gt;  3 2020-01-23 Washin… 53        1      0    7614893          0.01              0</span>
-<span class="co">#&gt;  4 2020-01-24 Illino… 17        1      0   12671821          0.01              0</span>
-<span class="co">#&gt;  5 2020-01-24 Washin… 53        1      0    7614893          0.01              0</span>
-<span class="co">#&gt;  6 2020-01-25 Califo… 06        1      0   39512223          0                 0</span>
-<span class="co">#&gt;  7 2020-01-25 Illino… 17        1      0   12671821          0.01              0</span>
-<span class="co">#&gt;  8 2020-01-25 Washin… 53        1      0    7614893          0.01              0</span>
-<span class="co">#&gt;  9 2020-01-26 Arizona 04        1      0    7278717          0.01              0</span>
-<span class="co">#&gt; 10 2020-01-26 Califo… 06        2      0   39512223          0.01              0</span>
-<span class="co">#&gt; # … with 11,894 more rows</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span>
 
-<span class="va">tests_raw</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 11,164 x 7</span>
-<span class="co">#&gt;    date       state daily_cases total_cases total_tests daily_tests data_quality</span>
-<span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;       </span>
-<span class="co">#&gt;  1 2020-10-07 AK            274        9861      490074       10700 A           </span>
-<span class="co">#&gt;  2 2020-10-07 AL            941      161418     1180818        7971 A           </span>
-<span class="co">#&gt;  3 2020-10-07 AR            809       88880     1087671           0 A+          </span>
-<span class="co">#&gt;  4 2020-10-07 AZ            604      222538     1518694        7267 A+          </span>
-<span class="co">#&gt;  5 2020-10-07 CA           2764      831225    15556706      126285 B           </span>
-<span class="co">#&gt;  6 2020-10-07 CO            654       74191     1459332       15070 A           </span>
-<span class="co">#&gt;  7 2020-10-07 CT            123       59364     1752045        7611 B           </span>
-<span class="co">#&gt;  8 2020-10-07 DC             45       15697      412656        2627 A+          </span>
-<span class="co">#&gt;  9 2020-10-07 DE             84       21550      299173        1660 A+          </span>
-<span class="co">#&gt; 10 2020-10-07 FL           2582      722707     5459711       26133 A           </span>
-<span class="co">#&gt; # … with 11,154 more rows</span>
-
-<span class="va">us_pop_ests</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 51 x 2</span>
-<span class="co">#&gt;    fips  population</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 01       4903185</span>
-<span class="co">#&gt;  2 02        723231</span>
-<span class="co">#&gt;  3 04       7278717</span>
-<span class="co">#&gt;  4 05       3017804</span>
-<span class="co">#&gt;  5 06      39512223</span>
-<span class="co">#&gt;  6 08       5758736</span>
-<span class="co">#&gt;  7 09       3565287</span>
-<span class="co">#&gt;  8 10        973764</span>
-<span class="co">#&gt;  9 11        705749</span>
-<span class="co">#&gt; 10 12      21477737</span>
-<span class="co">#&gt; # … with 41 more rows</span>
-
-<span class="va">us_states_map</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 12,999 x 5</span>
-<span class="co">#&gt;         lat      long group fips  abbr </span>
-<span class="co">#&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt;  1 1091779. -1380695. 01.1  01    AL   </span>
-<span class="co">#&gt;  2 1091268. -1376372. 01.1  01    AL   </span>
-<span class="co">#&gt;  3 1091140. -1362998. 01.1  01    AL   </span>
-<span class="co">#&gt;  4 1090940. -1343517. 01.1  01    AL   </span>
-<span class="co">#&gt;  5 1090913. -1341006. 01.1  01    AL   </span>
-<span class="co">#&gt;  6 1090796. -1334480. 01.1  01    AL   </span>
-<span class="co">#&gt;  7 1090235. -1304438. 01.1  01    AL   </span>
-<span class="co">#&gt;  8 1089944. -1289528. 01.1  01    AL   </span>
-<span class="co">#&gt;  9 1089451. -1265304. 01.1  01    AL   </span>
-<span class="co">#&gt; 10 1089305. -1258363. 01.1  01    AL   </span>
-<span class="co">#&gt; # … with 12,989 more rows</span></pre></div>
-<p>The combined spatial datasets can be retrieved with these functions:</p>
+<span class="va">DT</span> <span class="op">&lt;-</span> <span class="fu">covid19usa</span><span class="fu">::</span><span class="fu"><a href="../reference/create_datatable.html">create_datatable</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">DT</span> <span class="op">&lt;-</span> <span class="va">DT</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>
+<span class="va">DT</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">Date</span>, <span class="va">State</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">kableExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">kableExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>bootstrap_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bordered"</span>, <span class="st">"hover"</span><span class="op">)</span><span class="op">)</span></pre></div>
+<table class="table table table-bordered table-hover">
+<thead><tr>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+State
+</th>
+<th style="text-align:right;">
+Total Population
+</th>
+<th style="text-align:right;">
+% of Tests per Population
+</th>
+<th style="text-align:right;">
+Total Cases
+</th>
+<th style="text-align:right;">
+Total Tests
+</th>
+<th style="text-align:right;">
+% of Positive Cases
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2020-10-07
+</td>
+<td style="text-align:left;">
+Washington
+</td>
+<td style="text-align:right;">
+7614893
+</td>
+<td style="text-align:right;">
+0.2575305
+</td>
+<td style="text-align:right;">
+90663
+</td>
+<td style="text-align:right;">
+1961067
+</td>
+<td style="text-align:right;">
+0.0462315
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-10-07
+</td>
+<td style="text-align:left;">
+Illinois
+</td>
+<td style="text-align:right;">
+12671821
+</td>
+<td style="text-align:right;">
+0.4763347
+</td>
+<td style="text-align:right;">
+310380
+</td>
+<td style="text-align:right;">
+6036028
+</td>
+<td style="text-align:right;">
+0.0514212
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-10-07
+</td>
+<td style="text-align:left;">
+California
+</td>
+<td style="text-align:right;">
+39512223
+</td>
+<td style="text-align:right;">
+0.3937188
+</td>
+<td style="text-align:right;">
+831225
+</td>
+<td style="text-align:right;">
+15556706
+</td>
+<td style="text-align:right;">
+0.0534319
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-10-07
+</td>
+<td style="text-align:left;">
+Arizona
+</td>
+<td style="text-align:right;">
+7278717
+</td>
+<td style="text-align:right;">
+0.2086486
+</td>
+<td style="text-align:right;">
+222538
+</td>
+<td style="text-align:right;">
+1518694
+</td>
+<td style="text-align:right;">
+0.1465325
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-10-07
+</td>
+<td style="text-align:left;">
+Massachusetts
+</td>
+<td style="text-align:right;">
+6892503
+</td>
+<td style="text-align:right;">
+0.6497104
+</td>
+<td style="text-align:right;">
+136492
+</td>
+<td style="text-align:right;">
+4478131
+</td>
+<td style="text-align:right;">
+0.0304797
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-10-07
+</td>
+<td style="text-align:left;">
+Wisconsin
+</td>
+<td style="text-align:right;">
+5822434
+</td>
+<td style="text-align:right;">
+0.2815828
+</td>
+<td style="text-align:right;">
+146193
+</td>
+<td style="text-align:right;">
+1639497
+</td>
+<td style="text-align:right;">
+0.0891694
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-10-07
+</td>
+<td style="text-align:left;">
+Texas
+</td>
+<td style="text-align:right;">
+28995881
+</td>
+<td style="text-align:right;">
+0.2298409
+</td>
+<td style="text-align:right;">
+777556
+</td>
+<td style="text-align:right;">
+6664440
+</td>
+<td style="text-align:right;">
+0.1166724
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-10-07
+</td>
+<td style="text-align:left;">
+Nebraska
+</td>
+<td style="text-align:right;">
+1934408
+</td>
+<td style="text-align:right;">
+0.2512366
+</td>
+<td style="text-align:right;">
+48757
+</td>
+<td style="text-align:right;">
+485994
+</td>
+<td style="text-align:right;">
+0.1003243
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-10-07
+</td>
+<td style="text-align:left;">
+Utah
+</td>
+<td style="text-align:right;">
+3205958
+</td>
+<td style="text-align:right;">
+0.2749381
+</td>
+<td style="text-align:right;">
+80446
+</td>
+<td style="text-align:right;">
+881440
+</td>
+<td style="text-align:right;">
+0.0912666
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-10-07
+</td>
+<td style="text-align:left;">
+Oregon
+</td>
+<td style="text-align:right;">
+4217737
+</td>
+<td style="text-align:right;">
+0.1703681
+</td>
+<td style="text-align:right;">
+35634
+</td>
+<td style="text-align:right;">
+718568
+</td>
+<td style="text-align:right;">
+0.0495903
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="additional-datasets" class="section level1">
+<h1 class="hasAnchor">
+<a href="#additional-datasets" class="anchor"></a>Additional Datasets</h1>
+<p>The clean raw datasets can be retrieved with theses functions embedded in the package:</p>
+<p><code>covid_us_states</code>: Contains the Covid-19 cases and deaths (per 100,000 population) on a given date across each U.S state. Retrieved from <a href="https://github.com/nytimes/covid-19-data">The New York Times</a>.</p>
+<p><code>tests_raw</code>: Contains the daily and accumulated Covid-19 testing and cases on a given date across each U.S. state. The data quality variable is also provided to illustrate data completeness of the testing data in each state. Retrieved from <a href="https://covidtracking.com/data">Covidtracking.com</a></p>
+<p><code>us_pop_ests</code>: Contains the FIPS code and the total population for each U.S state. Retrieved from <a href="https://github.com/nytimes/covid-19-data">The New York Times</a>.</p>
+<p><code>us_states_map</code>: Contains the geographical coordinates for each state, primarily used for relational joins. Retrieved from the <code>usmap</code> R package</p>
+<p>These datasets are combined with the U.S spatial data to provide an interactive map and other data visualisations to allow users to explore Covid-19 cases across the U.S. Due to the large size in data, the combined dataset are stored in a list and can be retrieved with these functions:</p>
+<p>Contains the spatial data for the daily and accumulated Covid-19 cases across each U.S state:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
 <span class="va">list</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_map_data.html">create_map_data</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">list</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="co"># Accumulated Covid-19 cases spatial data</span>
@@ -202,9 +445,10 @@
 <span class="co">#&gt; # … with 2,826,558 more rows, and 5 more variables: total_cases &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   total_tests &lt;dbl&gt;, daily_tests &lt;dbl&gt;, data_quality &lt;chr&gt;,</span>
 <span class="co">#&gt; #   positive_prop &lt;dbl&gt;</span></pre></div>
+<p>Contains the data for the daily and accumulated Covid-19 positive cases found through testing across each U.S state, along with each U.S state’s respective data quality grades:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="va">list</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_datatable.html">create_datatable</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">list</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
+<span class="va">list</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="co"># Positive cases found through testing</span>
 <span class="co">#&gt; # A tibble: 11,164 x 9</span>
 <span class="co">#&gt;    state population abbr  date       daily_cases total_cases total_tests</span>
 <span class="co">#&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;date&gt;           &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span>
@@ -220,7 +464,7 @@
 <span class="co">#&gt; 10 Wash…    7614893 WA    2020-09-28         439       86269     1837206</span>
 <span class="co">#&gt; # … with 11,154 more rows, and 2 more variables: daily_tests &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   data_quality &lt;chr&gt;</span>
-<span class="va">list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span> <span class="co"># spatial data from </span>
+<span class="va">list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span> <span class="co"># For interactive table</span>
 <span class="co">#&gt; # A tibble: 11,164 x 7</span>
 <span class="co">#&gt;    Date       State `Total Populati… `% of Tests per… `Total Cases`</span>
 <span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;            &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;</span>
@@ -237,21 +481,10 @@
 <span class="co">#&gt; # … with 11,154 more rows, and 2 more variables: `Total Tests` &lt;dbl&gt;, `% of</span>
 <span class="co">#&gt; #   Positive Cases` &lt;dbl&gt;</span></pre></div>
 </div>
-</div>
-<div id="what-the-app-does-1" class="section level1">
+<div id="more-details" class="section level1">
 <h1 class="hasAnchor">
-<a href="#what-the-app-does-1" class="anchor"></a>What the App Does</h1>
-<p>The Shiny App consists of two main tabs:</p>
-<div id="tab-1-comparing-confirmed-covid-19-cases-per-100000-population-across-u-s-states" class="section level3">
-<h3 class="hasAnchor">
-<a href="#tab-1-comparing-confirmed-covid-19-cases-per-100000-population-across-u-s-states" class="anchor"></a>Tab 1: Comparing Confirmed Covid-19 Cases (per 100,000 Population) across U.S States</h3>
-<video width="720" height="400" controls><source src="tab1_example.mp4" type="video/mp4"></source></video>
-</div>
-<div id="tab-2-positive-covid-19-cases-found-via-covid-19-testing" class="section level3">
-<h3 class="hasAnchor">
-<a href="#tab-2-positive-covid-19-cases-found-via-covid-19-testing" class="anchor"></a>Tab 2: Positive Covid-19 Cases found via Covid-19 Testing</h3>
-<video width="720" height="400" controls><source src="tab2_example.mp4" type="video/mp4"></source></video>
-</div>
+<a href="#more-details" class="anchor"></a>More Details</h1>
+<p>More information about the functions embedded in the R package for the Shiny application can be found in the reference section of the <a href="https://etc5523-2020.github.io/r-package-assessment-BrendiA/reference/index.html">pkgdown site</a>.</p>
 </div>
   </div>
 
