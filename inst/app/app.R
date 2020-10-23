@@ -35,16 +35,11 @@ covid19usa::tests_raw
 
 # -------------------------------------------- Join Datasets ----------------------------------------------------
 
-## Include geographical coordinates for each state for plotting map
+# Include map data in U.S Covid-19 cases data --------------------------------------------
 covid_map <- covid_us_states %>%
   left_join(us_states_map, by = "fips")
 
-## Include population estimates in US-testing data --------------------------------------------
-us_state_tests <- covid_map %>%
-  distinct(abbr, population, state) %>%
-  right_join(tests_raw, by = c("abbr" = "state"))
-
-# Include map data in US-testing data --------------------------------------------
+# Include map data in U.S Covid-19 testing data --------------------------------------------
 us_tests_map <- covid_map %>%
   distinct(state, abbr, population, lat, long, group) %>%
   right_join(tests_raw, by = c("abbr" = "state")) %>%
@@ -54,6 +49,11 @@ us_tests_map <- covid_map %>%
 us_tests_map$positive_prop [!is.finite(us_tests_map$positive_prop)] <- 0
 us_tests_map$positive_prop [us_tests_map$positive_prop < 0] <- 0
 us_tests_map$positive_prop [us_tests_map$positive_prop > 100] <- 0
+
+## Include population estimates in US-testing data --------------------------------------------
+us_state_tests <- covid_map %>%
+  distinct(abbr, population, state) %>%
+  right_join(tests_raw, by = c("abbr" = "state"))
 
 # Clean names for DT Table --------------------------------------------
 total_tests_df <- us_state_tests %>%
