@@ -1,15 +1,15 @@
-test_that("Dates are valid", {
-  ui_input("date", "choose_date", covid_us_states)
-})
-
-# input_id is not null
-# Dates are within a valid range
-# Maximum date > minimum date
-
 test_that("States chosen are correct", {
-  html_output <- as.character(ui_input("state", "choose_states" ,covid_us_states))
-  expect_match(html_output, unique(covid_us_states$state))
+
+  html_output <- ui_input("state", "choose_states" , covid_us_states)
+  html_output <- as.character(html_output)
+  expect_match(html_output, sample(covid_us_states$state, 1))
+
+  expect_error(ui_input("state", "choose_states")) # missing data argument
+  expect_invisible(ui_input("", "choose_states" , covid_us_states))
+
 })
 
-
-# states corresponds to
+test_that("Dates are valid", {
+  expect_error(ui_input("state", "choose_states")) # missing data argument
+  expect_invisible(ui_input("", "choose_date", covid_us_states)) # no output if input_type not given
+})
