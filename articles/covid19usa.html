@@ -168,7 +168,74 @@
 <span class="co">#&gt; # … with 12,989 more rows</span></pre></div>
 <p>The combined spatial datasets can be retrieved with these functions:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="../reference/create_map_data.html">create_map_data</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<span class="va">list</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_map_data.html">create_map_data</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">list</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="co"># Accumulated Covid-19 cases spatial data</span>
+<span class="co">#&gt; # A tibble: 3,036,749 x 12</span>
+<span class="co">#&gt;    date       state fips  cases deaths population cases_per_hnd deaths_per_hnd</span>
+<span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 2020-01-21 Wash… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt;  2 2020-01-21 Wash… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt;  3 2020-01-21 Wash… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt;  4 2020-01-21 Wash… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt;  5 2020-01-21 Wash… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt;  6 2020-01-21 Wash… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt;  7 2020-01-21 Wash… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt;  8 2020-01-21 Wash… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt;  9 2020-01-21 Wash… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt; 10 2020-01-21 Wash… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt; # … with 3,036,739 more rows, and 4 more variables: lat &lt;dbl&gt;, long &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   group &lt;chr&gt;, abbr &lt;chr&gt;</span>
+<span class="va">list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span> <span class="co"># Daily Covid-19 cases spatial data</span>
+<span class="co">#&gt; # A tibble: 2,826,568 x 13</span>
+<span class="co">#&gt;    state population     lat   long group abbr  date       daily_cases</span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;date&gt;           &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Wash…    7614893 -1.79e6 6.58e5 53.1  WA    2020-10-07         387</span>
+<span class="co">#&gt;  2 Wash…    7614893 -1.79e6 6.58e5 53.1  WA    2020-10-06         402</span>
+<span class="co">#&gt;  3 Wash…    7614893 -1.79e6 6.58e5 53.1  WA    2020-10-05         455</span>
+<span class="co">#&gt;  4 Wash…    7614893 -1.79e6 6.58e5 53.1  WA    2020-10-04         609</span>
+<span class="co">#&gt;  5 Wash…    7614893 -1.79e6 6.58e5 53.1  WA    2020-10-03         694</span>
+<span class="co">#&gt;  6 Wash…    7614893 -1.79e6 6.58e5 53.1  WA    2020-10-02         594</span>
+<span class="co">#&gt;  7 Wash…    7614893 -1.79e6 6.58e5 53.1  WA    2020-10-01         480</span>
+<span class="co">#&gt;  8 Wash…    7614893 -1.79e6 6.58e5 53.1  WA    2020-09-30         404</span>
+<span class="co">#&gt;  9 Wash…    7614893 -1.79e6 6.58e5 53.1  WA    2020-09-29         369</span>
+<span class="co">#&gt; 10 Wash…    7614893 -1.79e6 6.58e5 53.1  WA    2020-09-28         439</span>
+<span class="co">#&gt; # … with 2,826,558 more rows, and 5 more variables: total_cases &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   total_tests &lt;dbl&gt;, daily_tests &lt;dbl&gt;, data_quality &lt;chr&gt;,</span>
+<span class="co">#&gt; #   positive_prop &lt;dbl&gt;</span></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="va">list</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_datatable.html">create_datatable</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">list</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
+<span class="co">#&gt; # A tibble: 11,164 x 9</span>
+<span class="co">#&gt;    state population abbr  date       daily_cases total_cases total_tests</span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;date&gt;           &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Wash…    7614893 WA    2020-10-07         387       90663     1961067</span>
+<span class="co">#&gt;  2 Wash…    7614893 WA    2020-10-06         402       90276     1951407</span>
+<span class="co">#&gt;  3 Wash…    7614893 WA    2020-10-05         455       89874     1935899</span>
+<span class="co">#&gt;  4 Wash…    7614893 WA    2020-10-04         609       89419     1922956</span>
+<span class="co">#&gt;  5 Wash…    7614893 WA    2020-10-03         694       88810     1905759</span>
+<span class="co">#&gt;  6 Wash…    7614893 WA    2020-10-02         594       88116     1884074</span>
+<span class="co">#&gt;  7 Wash…    7614893 WA    2020-10-01         480       87522     1868089</span>
+<span class="co">#&gt;  8 Wash…    7614893 WA    2020-09-30         404       87042     1854399</span>
+<span class="co">#&gt;  9 Wash…    7614893 WA    2020-09-29         369       86638     1848463</span>
+<span class="co">#&gt; 10 Wash…    7614893 WA    2020-09-28         439       86269     1837206</span>
+<span class="co">#&gt; # … with 11,154 more rows, and 2 more variables: daily_tests &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   data_quality &lt;chr&gt;</span>
+<span class="va">list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span> <span class="co"># spatial data from </span>
+<span class="co">#&gt; # A tibble: 11,164 x 7</span>
+<span class="co">#&gt;    Date       State `Total Populati… `% of Tests per… `Total Cases`</span>
+<span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;            &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 2020-10-07 Wash…          7614893            0.258         90663</span>
+<span class="co">#&gt;  2 2020-10-06 Wash…          7614893            0.256         90276</span>
+<span class="co">#&gt;  3 2020-10-05 Wash…          7614893            0.254         89874</span>
+<span class="co">#&gt;  4 2020-10-04 Wash…          7614893            0.253         89419</span>
+<span class="co">#&gt;  5 2020-10-03 Wash…          7614893            0.250         88810</span>
+<span class="co">#&gt;  6 2020-10-02 Wash…          7614893            0.247         88116</span>
+<span class="co">#&gt;  7 2020-10-01 Wash…          7614893            0.245         87522</span>
+<span class="co">#&gt;  8 2020-09-30 Wash…          7614893            0.244         87042</span>
+<span class="co">#&gt;  9 2020-09-29 Wash…          7614893            0.243         86638</span>
+<span class="co">#&gt; 10 2020-09-28 Wash…          7614893            0.241         86269</span>
+<span class="co">#&gt; # … with 11,154 more rows, and 2 more variables: `Total Tests` &lt;dbl&gt;, `% of</span>
+<span class="co">#&gt; #   Positive Cases` &lt;dbl&gt;</span></pre></div>
 </div>
 </div>
 <div id="what-the-app-does-1" class="section level1">
@@ -178,14 +245,12 @@
 <div id="tab-1-comparing-confirmed-covid-19-cases-per-100000-population-across-u-s-states" class="section level3">
 <h3 class="hasAnchor">
 <a href="#tab-1-comparing-confirmed-covid-19-cases-per-100000-population-across-u-s-states" class="anchor"></a>Tab 1: Comparing Confirmed Covid-19 Cases (per 100,000 Population) across U.S States</h3>
-<div class="figure">
-<video src="tab1_example.mp4" controls=""><a href="tab1_example.mp4"></a></video><p class="caption">please</p>
-</div>
-<video width="320" height="240" controls><source src="tab1_example.mp4" type="video/mp4"></source></video>
+<video width="720" height="400" controls><source src="tab1_example.mp4" type="video/mp4"></source></video>
 </div>
 <div id="tab-2-positive-covid-19-cases-found-via-covid-19-testing" class="section level3">
 <h3 class="hasAnchor">
 <a href="#tab-2-positive-covid-19-cases-found-via-covid-19-testing" class="anchor"></a>Tab 2: Positive Covid-19 Cases found via Covid-19 Testing</h3>
+<video width="720" height="400" controls><source src="tab2_example.mp4" type="video/mp4"></source></video>
 </div>
 </div>
   </div>
