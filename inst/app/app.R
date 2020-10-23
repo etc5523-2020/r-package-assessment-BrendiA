@@ -35,45 +35,14 @@ covid19usa::tests_raw
 
 # -------------------------------------------- Join Datasets ----------------------------------------------------
 
-# Include map data in U.S Covid-19 cases data --------------------------------------------
-covid_map <- covid_us_states %>%
-  left_join(us_states_map, by = "fips")
+# Creates a list of map data
+map_data <- create_map_data()
+covid_map <- map_data[[1]]
+us_tests_map <- map_data[[2]]
 
-# Include map data in U.S Covid-19 testing data --------------------------------------------
-us_tests_map <- covid_map %>%
-  distinct(state, abbr, population, lat, long, group) %>%
-  right_join(tests_raw, by = c("abbr" = "state")) %>%
-  mutate(positive_prop = round((daily_cases/daily_tests)*100,2)) # Proportion of positive cases as a result of testing
-
-# Replace Inf, NaN and NAs and incoherent values with 0
-us_tests_map$positive_prop [!is.finite(us_tests_map$positive_prop)] <- 0
-us_tests_map$positive_prop [us_tests_map$positive_prop < 0] <- 0
-us_tests_map$positive_prop [us_tests_map$positive_prop > 100] <- 0
-
-## Include population estimates in US-testing data --------------------------------------------
-us_state_tests <- covid_map %>%
-  distinct(abbr, population, state) %>%
-  right_join(tests_raw, by = c("abbr" = "state"))
-
-# Clean names for DT Table --------------------------------------------
-total_tests_df <- us_state_tests %>%
-  mutate(total_positive_prop = total_cases/total_tests,
-         tests_prop = total_tests/population)
-
-# Replace Inf, NaN and NAs and incoherent values with 0
-total_tests_df$total_cases[!is.finite(total_tests_df$total_cases)] <- 0
-total_tests_df$total_positive_prop[!is.finite(total_tests_df$total_positive_prop)] <- 0
-
-total_tests_table <- total_tests_df %>%
-  select(date, state, population, tests_prop, total_cases, total_tests, total_positive_prop) %>%
-  rename(Date = date,
-         State = state,
-         `Total Cases` = total_cases,
-         `Total Tests` = total_tests,
-         `% of Positive Cases` = total_positive_prop,
-         `Total Population` = population,
-         `% of Tests per Population` = tests_prop)
-
+table_data <- create_datatable()
+us_state_tests <- table_data[[1]]
+total_tests_table <- table_data[[2]]
 
 # ------------------------------------------------------------------------------------------------------------------#
 # ------------------------------------------------ Create Web App --------------------------------------------------#
@@ -179,7 +148,7 @@ ui <- fluidPage(
 server <- function(input, output, session) {
 
   plot_map <- eventReactive(input$show_trend, {
-    validate(need(input$choose_states != "", "Hey, be sure to add a state or you'd run into an error :)"))
+    covid19usa::error_msg(input$choose_states, "map")
 
     covid_map %>%
       filter(date == input$choose_date) %>%
@@ -209,7 +178,7 @@ server <- function(input, output, session) {
 
   ## US Cases Bar Plot
   plot_bar <- eventReactive(input$show_trend, {
-    validate(need(input$choose_states != "", "Be sure to add a state"))
+    error_msg(input$choose_states, "bar")
 
     plot_bar <- covid_us_states %>%
       filter(date == input$choose_date) %>%
@@ -236,7 +205,7 @@ server <- function(input, output, session) {
 
   ## US Testing Map
   plot_tests_map <- eventReactive(input$show_trend2, {
-    validate(need(input$choose_states2 != "", "Hey, be sure to add a state or you'd run into an error :)"))
+    error_msg(input$choose_states2, "map")
 
     plot_tests <- us_tests_map %>%
       filter(date == input$choose_date2) %>%
@@ -276,7 +245,7 @@ server <- function(input, output, session) {
 
   ## US Tests Bar Plot
   plot_bar2 <- eventReactive(input$show_trend2, {
-    validate(need(input$choose_states2 != "", "Be sure to add a state"))
+    error_msg(input$choose_states2, "bar")
 
     plot_bar2 <- us_state_tests %>%
       filter(date == input$choose_date2) %>%

@@ -20,6 +20,7 @@ library(dplyr)
 library(tibble)
 ```
 
+
 # Getting Started: Launching the App
 
 The Shiny web application can be launched with a single line of code:
@@ -49,8 +50,17 @@ us_states_map %>% tibble()
 The combined spatial datasets can be retrieved with these functions:
 
 ```{r}
-create_map_data()
+list <- create_map_data()
+list[[1]] # Accumulated Covid-19 cases spatial data
+list[[2]] # Daily Covid-19 cases spatial data
 ```
+
+```{r}
+list <- create_datatable()
+list[[1]]
+list[[2]] # spatial data from 
+```
+
 
 # What the App Does
 
@@ -58,11 +68,12 @@ The Shiny App consists of two main tabs:
 
 ### Tab 1: Comparing Confirmed Covid-19 Cases (per 100,000 Population) across U.S States
 
-
-![please](tab1_example.mp4)
-
-<video width="320" height="240" controls>
+<video width="720" height="400" controls>
   <source src="tab1_example.mp4" type="video/mp4">
 </video>
 
 ### Tab 2: Positive Covid-19 Cases found via Covid-19 Testing
+
+<video width="720" height="400" controls>
+  <source src="tab2_example.mp4" type="video/mp4">
+</video>
