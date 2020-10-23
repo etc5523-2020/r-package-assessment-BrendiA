@@ -413,10 +413,12 @@ Oregon
 <h1 class="hasAnchor">
 <a href="#additional-datasets" class="anchor"></a>Additional Datasets</h1>
 <p>The clean raw datasets can be retrieved with theses functions embedded in the package:</p>
-<p><code>covid_us_states</code>: Contains the Covid-19 cases and deaths (per 100,000 population) on a given date across each U.S state. <strong>Retrieved from <a href="https://github.com/nytimes/covid-19-data">The New York Times</a>.</strong></p>
-<p><code>tests_raw</code>: Contains the daily and accumulated Covid-19 testing and cases on a given date across each U.S. state. The data quality variable is also provided to illustrate data completeness of the testing data in each state. <strong>Retrieved from <a href="https://covidtracking.com/data">Covidtracking.com</a>.</strong></p>
-<p><code>us_pop_ests</code>: Contains the FIPS code and the total population for each U.S state. <strong>Retrieved from <a href="https://github.com/nytimes/covid-19-data">The New York Times</a>.</strong></p>
-<p><code>us_states_map</code>: Contains the geographical coordinates for each state, primarily used for relational joins. <strong>Retrieved from the <code>usmap</code> R package</strong></p>
+<ul>
+<li><p><code>covid_us_states</code>: Contains the Covid-19 cases and deaths (per 100,000 population) on a given date across each U.S state. <strong>Retrieved from <a href="https://github.com/nytimes/covid-19-data">The New York Times</a>.</strong></p></li>
+<li><p><code>tests_raw</code>: Contains the daily and accumulated Covid-19 testing and cases on a given date across each U.S. state. The data quality variable is also provided to illustrate data completeness of the testing data in each state. <strong>Retrieved from <a href="https://covidtracking.com/data">Covidtracking.com</a>.</strong></p></li>
+<li><p><code>us_pop_ests</code>: Contains the FIPS code and the total population for each U.S state. <strong>Retrieved from <a href="https://github.com/nytimes/covid-19-data">The New York Times</a>.</strong></p></li>
+<li><p><code>us_states_map</code>: Contains the geographical coordinates for each state, primarily used for relational joins. <strong>Retrieved from the <code>usmap</code> R package</strong></p></li>
+</ul>
 <p>These datasets are combined with the U.S spatial data to provide an interactive map and other data visualisations to allow users to explore Covid-19 cases across the U.S. Due to the large size in data, the combined dataset are stored in a list and can be retrieved with these functions:</p>
 <p>Contains the spatial data for the daily and accumulated Covid-19 cases across each U.S state:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
