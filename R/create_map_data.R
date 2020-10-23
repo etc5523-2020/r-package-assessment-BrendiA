@@ -1,7 +1,8 @@
 #' Creates a list of 2 elements relating to the spatial data of Covid-19 cases in the U.S
 #'
 #' @example
-#' list <- create_map_data()
+#' \dontrun{
+#' list <- create_map_data()}
 #'
 #' @import dplyr
 #'

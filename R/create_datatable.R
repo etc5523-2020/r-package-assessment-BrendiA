@@ -1,13 +1,9 @@
 #' Creates a list of 2 elements relating to the spatial data of Covid-19 testing in the U.S
 #'
-#' @example
-#' list <- create_datatable()
-#'
 #' @import dplyr
 #'
 #' @export
 #'
-
 create_datatable <- function() {
 
   ## Include population estimates in US-testing data

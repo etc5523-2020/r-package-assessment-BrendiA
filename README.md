@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# covid19usa
+# covid19usa <img src='man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
 
@@ -45,11 +45,7 @@ drop-down list to manoeuvre between dates and states across the United
 States to visualise how the Covid-19 trajectories changes with these
 inputs.
 
-<video width="720" height="400" controls>
-
-<source src="man/figures/tab1_example.mp4" type="video/mp4">
-
-</video>
+![caption](man/figures/tab1-example.gif)
 
 As the video suggests, the first component of the Shiny application
 includes a Choropleth map that displays the statistical data of the
@@ -58,11 +54,7 @@ sequential colour scale to establish the geographical location of the
 states with the highest total confirmed cases. This trend is also
 plotted on a histogram next to the map for better comparison.
 
-<video width="720" height="400" controls>
-
-<source src="man/figures/tab1_example.mp4" type="video/mp4">
-
-</video>
+![caption](man/figures/tab2-example.gif)
 
 Covid-19 testing promotes early detection of community-acquired Covid-19
 cases, which can support public health response to the pandemic such as

@@ -12,6 +12,8 @@ a tibble with 11,904 observations and 5 variables:
 \item \strong{fips}: Two-letter state code
 \item \strong{cases}: Cumulative number of cases per state
 \item \strong{deaths}: Cumulative number of deaths per state
+\item \emph{cases_per_hnd} Cumulative number of cases (per 100,000 population) per state
+\item \emph{deaths_per_hnd} Cumulative number of deaths (per 100,000 population) per state
 }
 }
 \source{

@@ -41,11 +41,7 @@ The Shiny app open with an 'About' tab. It establishes the purpose of the Shiny 
 
 ## Comparing Confirmed Covid-19 Cases (per 100,000 Population) across U.S States
 
-<video width="720" height="400" controls>
-
-<source src="../../vignettes/tab1_example.mp4" type="video/mp4">
-
-</video>
+![](tab1-example.gif)
 
 The first component of the application allows you to compare the total number of confirmed Covid-19 cases (per 100,000 population) reported by each U.S state. As the video suggests, the slider input and the input slots allow you to manoeuvre between each date and the different U.S states respectively for a more tailored analysis.
 
@@ -65,11 +61,7 @@ When you hover your mouse over to a state on the map, you will retrieve the foll
 
 ## Positive Covid-19 Cases found via Covid-19 Testing
 
-<video width="720" height="400" controls>
-
-<source src="../../vignettes/tab2_example.mp4" type="video/mp4">
-
-</video>
+![](tab2-example.gif)
 
 The last component of the app allows you to examine the positive cases declared as a result of testing across each U.S states. Like in the previous tab, you can access the slider input and input slots to select dates and U.S. states respectively.
 

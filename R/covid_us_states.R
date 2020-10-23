@@ -10,6 +10,8 @@
 #' - **fips**: Two-letter state code
 #' - **cases**: Cumulative number of cases per state
 #' - **deaths**: Cumulative number of deaths per state
+#' - *cases_per_hnd* Cumulative number of cases (per 100,000 population) per state
+#' - *deaths_per_hnd* Cumulative number of deaths (per 100,000 population) per state
 #'
 #'
 "covid_us_states"

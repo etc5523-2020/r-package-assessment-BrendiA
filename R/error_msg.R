@@ -17,6 +17,3 @@ error_msg <- function(input, plot_type){
     shiny::validate(shiny::need(input != "", ""))
     }
 }
-
-# How can I pass Shiny input into the function?
-## Function is in eventReactive
