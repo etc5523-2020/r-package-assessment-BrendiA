@@ -43,7 +43,7 @@ The Shiny app open with an 'About' tab. It establishes the purpose of the Shiny 
 
 <video width="720" height="400" controls>
 
-<source src="tab1_example.mp4" type="video/mp4">
+<source src="../../vignettes/tab1_example.mp4" type="video/mp4">
 
 </video>
 
@@ -67,7 +67,7 @@ When you hover your mouse over to a state on the map, you will retrieve the foll
 
 <video width="720" height="400" controls>
 
-<source src="tab2_example.mp4" type="video/mp4">
+<source src="../../vignettes/tab2_example.mp4" type="video/mp4">
 
 </video>
 

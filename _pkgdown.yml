@@ -4,6 +4,7 @@ template:
 
 navbar:
   structure:
+    left: [help]
     right: [github]
   components:
     home: ~
