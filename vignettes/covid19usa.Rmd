@@ -1,8 +1,8 @@
 ---
-title: "Introduction to covid19usa"
+title: "Introduction to covid19usa R package"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to covid19usa}
+  %\VignetteIndexEntry{Introduction to covid19usa R package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,9 +16,11 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(covid19usa)
+library(dplyr)
+library(tibble)
 ```
 
-# How to launch the App
+# Getting Started: Launching the App
 
 The Shiny web application can be launched with a single line of code:
 
@@ -30,18 +32,37 @@ launch_app()
 
 ## The Datasets
 
+The package retrieves Covid-19 datasets from [The New York Times](https://github.com/nytimes/covid-19-data)) and [Covidtracking.com](https://covidtracking.com/data). These datasets are combined with the U.S map data to provide an interactive map and other data visualisations to allow users to explore Covid-19 cases across the U.S. Several interactive features are included to allow for a more personalised information with the ability to manoeuvre between dates and states across U.S.
+
+The datasets can be retrieved with theses functions embedded in the package:
+
 ```{r}
-covid19usa::covid_us_states %>% tibble
-covid19usa::tests_raw
-covid19usa::us_pop_ests
-covid19usa::us_states_map
+covid_us_states %>% tibble() 
+
+tests_raw %>% tibble()
+
+us_pop_ests %>% tibble()
+
+us_states_map %>% tibble()
 ```
 
-The package uses the Covid-19 datasets from (Source: [New York Times](https://github.com/nytimes/covid-19-data)) and 
+The combined spatial datasets can be retrieved with these functions:
 
-# Guidelines 
+```{r}
+create_map_data()
+```
+
+# What the App Does
+
+The Shiny App consists of two main tabs:
+
+### Tab 1: Comparing Confirmed Covid-19 Cases (per 100,000 Population) across U.S States
 
 
+![please](tab1_example.mp4)
 
+<video width="320" height="240" controls>
+  <source src="tab1_example.mp4" type="video/mp4">
+</video>
 
-
+### Tab 2: Positive Covid-19 Cases found via Covid-19 Testing
