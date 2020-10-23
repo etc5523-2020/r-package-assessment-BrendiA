@@ -8,6 +8,8 @@ error_msg(input, plot_type)
 }
 \arguments{
 \item{input}{Shiny user-interface input}
+
+\item{plot_type}{"bar" or "map"}
 }
 \value{
 Error message if condition(s) are not met
