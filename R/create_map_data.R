@@ -21,10 +21,7 @@ create_map_data <- function() {
   us_tests_map$positive_prop [!is.finite(us_tests_map$positive_prop)] <- 0
   us_tests_map$positive_prop [us_tests_map$positive_prop < 0] <- 0
   us_tests_map$positive_prop [us_tests_map$positive_prop > 100] <- 0
+
+  list(covid_map, us_tests_map)
 }
 
-
-# How can I save the data frame?
-# return(covid_map)
-# return(us_tests_map)
-# When I type covid19usa::covid_map() -> returns map data
