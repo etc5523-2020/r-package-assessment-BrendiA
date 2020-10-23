@@ -4,12 +4,11 @@ template:
 
 navbar:
   structure:
-    left: [help]
     right: [github]
   components:
     home: ~
     extensions:
-      text: Vignette
+      text: Get Started
       href: articles/covid19usa.html
     github:
       icon: fa-github fa-lg
