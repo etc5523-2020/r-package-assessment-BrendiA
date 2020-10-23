@@ -106,19 +106,19 @@ DT %>%
 
 The clean raw datasets can be retrieved with theses functions embedded in the package:
 
-`covid_us_states`: Contains the Covid-19 cases and deaths (per 100,000 population) on a given date across each U.S state. Retrieved from [The New York Times](https://github.com/nytimes/covid-19-data).
+`covid_us_states`: Contains the Covid-19 cases and deaths (per 100,000 population) on a given date across each U.S state. **Retrieved from [The New York Times](https://github.com/nytimes/covid-19-data).**
 
-`tests_raw`: Contains the daily and accumulated Covid-19 testing and cases on a given date across each U.S. state. The data quality variable is also provided to illustrate data completeness of the testing data in each state. Retrieved from [Covidtracking.com](https://covidtracking.com/data)
+`tests_raw`: Contains the daily and accumulated Covid-19 testing and cases on a given date across each U.S. state. The data quality variable is also provided to illustrate data completeness of the testing data in each state. **Retrieved from [Covidtracking.com](https://covidtracking.com/data).**
 
-`us_pop_ests`: Contains the FIPS code and the total population for each U.S state. Retrieved from [The New York Times](https://github.com/nytimes/covid-19-data).
+`us_pop_ests`: Contains the FIPS code and the total population for each U.S state. **Retrieved from [The New York Times](https://github.com/nytimes/covid-19-data).**
 
-`us_states_map`: Contains the geographical coordinates for each state, primarily used for relational joins. Retrieved from the `usmap` R package
+`us_states_map`: Contains the geographical coordinates for each state, primarily used for relational joins. **Retrieved from the `usmap` R package**
 
 These datasets are combined with the U.S spatial data to provide an interactive map and other data visualisations to allow users to explore Covid-19 cases across the U.S. Due to the large size in data, the combined dataset are stored in a list and can be retrieved with these functions:
 
 Contains the spatial data for the daily and accumulated Covid-19 cases across each U.S state:
 
-```{r}
+```{r eval = FALSE}
 list <- create_map_data()
 list[[1]] # Accumulated Covid-19 cases spatial data
 list[[2]] # Daily Covid-19 cases spatial data
@@ -126,7 +126,7 @@ list[[2]] # Daily Covid-19 cases spatial data
 
 Contains the data for the daily and accumulated Covid-19 positive cases found through testing across each U.S state, along with each U.S state's respective data quality grades:
 
-```{r}
+```{r, eval = FALSE}
 list <- create_datatable()
 list[[1]] # Positive cases found through testing
 list[[2]] # For interactive table
