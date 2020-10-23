@@ -12,7 +12,7 @@ error_msg(input, plot_type)
 \item{plot_type}{"bar" or "map"}
 }
 \value{
-Error message if condition(s) are not met
+Error message if condition(s) are not met in the Shiny App
 }
 \description{
 Creates error message if Shiny App input is empty

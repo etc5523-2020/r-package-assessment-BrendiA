@@ -2,10 +2,10 @@
 % Please edit documentation in R/create_map_data.R
 \name{create_map_data}
 \alias{create_map_data}
-\title{Uses relational joins to create spatial data for Covid-19 cases and tests data embedded in the App}
+\title{Creates a list of 2 elements relating to the spatial data of Covid-19 cases in the U.S}
 \usage{
 create_map_data()
 }
 \description{
-Uses relational joins to create spatial data for Covid-19 cases and tests data embedded in the App
+Creates a list of 2 elements relating to the spatial data of Covid-19 cases in the U.S
 }

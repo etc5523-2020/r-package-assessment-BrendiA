@@ -1,7 +1,9 @@
-#' Uses relational joins to create spatial data for Covid-19 cases and tests data embedded in the App
+#' Creates a list of 2 elements relating to the spatial data of Covid-19 cases in the U.S
 #'
 #' @example
-#' create_map_data()
+#' list <- create_map_data()
+#'
+#' @import dplyr
 #'
 #' @export
 #'
