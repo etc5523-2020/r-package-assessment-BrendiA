@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Introduction to covid19usa • covid19usa</title>
+<title>Introduction to covid19usa R package • covid19usa</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/darkly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to covid19usa">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to covid19usa R package">
 <meta property="og:description" content="covid19usa">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -65,7 +65,7 @@
 <script src="covid19usa_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Introduction to covid19usa</h1>
+      <h1 data-toc-skip>Introduction to covid19usa R package</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/etc5523-2020/r-package-assessment-BrendiA/blob/master/vignettes/covid19usa.Rmd"><code>vignettes/covid19usa.Rmd</code></a></small>
@@ -76,12 +76,125 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/etc5523-2020/r-package-assessment-BrendiA">covid19usa</a></span><span class="op">)</span></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/etc5523-2020/r-package-assessment-BrendiA">covid19usa</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'dplyr'</span>
+<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     filter, lag</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span></pre></div>
+<div id="getting-started-launching-the-app" class="section level1">
+<h1 class="hasAnchor">
+<a href="#getting-started-launching-the-app" class="anchor"></a>Getting Started: Launching the App</h1>
+<p>The Shiny web application can be launched with a single line of code:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="../reference/launch_app.html">launch_app</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+</div>
+<div id="what-the-app-does" class="section level1">
+<h1 class="hasAnchor">
+<a href="#what-the-app-does" class="anchor"></a>What the App Does</h1>
+<div id="the-datasets" class="section level2">
+<h2 class="hasAnchor">
+<a href="#the-datasets" class="anchor"></a>The Datasets</h2>
+<p>The package retrieves Covid-19 datasets from <a href="https://github.com/nytimes/covid-19-data">The New York Times</a>) and <a href="https://covidtracking.com/data">Covidtracking.com</a>. These datasets are combined with the U.S map data to provide an interactive map and other data visualisations to allow users to explore Covid-19 cases across the U.S. Several interactive features are included to allow for a more personalised information with the ability to manoeuvre between dates and states across U.S.</p>
+<p>The datasets can be retrieved with theses functions embedded in the package:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="va">covid_us_states</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span> 
+<span class="co">#&gt; # A tibble: 11,904 x 8</span>
+<span class="co">#&gt;    date       state   fips  cases deaths population cases_per_hnd deaths_per_hnd</span>
+<span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 2020-01-21 Washin… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt;  2 2020-01-22 Washin… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt;  3 2020-01-23 Washin… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt;  4 2020-01-24 Illino… 17        1      0   12671821          0.01              0</span>
+<span class="co">#&gt;  5 2020-01-24 Washin… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt;  6 2020-01-25 Califo… 06        1      0   39512223          0                 0</span>
+<span class="co">#&gt;  7 2020-01-25 Illino… 17        1      0   12671821          0.01              0</span>
+<span class="co">#&gt;  8 2020-01-25 Washin… 53        1      0    7614893          0.01              0</span>
+<span class="co">#&gt;  9 2020-01-26 Arizona 04        1      0    7278717          0.01              0</span>
+<span class="co">#&gt; 10 2020-01-26 Califo… 06        2      0   39512223          0.01              0</span>
+<span class="co">#&gt; # … with 11,894 more rows</span>
+
+<span class="va">tests_raw</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 11,164 x 7</span>
+<span class="co">#&gt;    date       state daily_cases total_cases total_tests daily_tests data_quality</span>
+<span class="co">#&gt;    &lt;date&gt;     &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1 2020-10-07 AK            274        9861      490074       10700 A           </span>
+<span class="co">#&gt;  2 2020-10-07 AL            941      161418     1180818        7971 A           </span>
+<span class="co">#&gt;  3 2020-10-07 AR            809       88880     1087671           0 A+          </span>
+<span class="co">#&gt;  4 2020-10-07 AZ            604      222538     1518694        7267 A+          </span>
+<span class="co">#&gt;  5 2020-10-07 CA           2764      831225    15556706      126285 B           </span>
+<span class="co">#&gt;  6 2020-10-07 CO            654       74191     1459332       15070 A           </span>
+<span class="co">#&gt;  7 2020-10-07 CT            123       59364     1752045        7611 B           </span>
+<span class="co">#&gt;  8 2020-10-07 DC             45       15697      412656        2627 A+          </span>
+<span class="co">#&gt;  9 2020-10-07 DE             84       21550      299173        1660 A+          </span>
+<span class="co">#&gt; 10 2020-10-07 FL           2582      722707     5459711       26133 A           </span>
+<span class="co">#&gt; # … with 11,154 more rows</span>
+
+<span class="va">us_pop_ests</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 51 x 2</span>
+<span class="co">#&gt;    fips  population</span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 01       4903185</span>
+<span class="co">#&gt;  2 02        723231</span>
+<span class="co">#&gt;  3 04       7278717</span>
+<span class="co">#&gt;  4 05       3017804</span>
+<span class="co">#&gt;  5 06      39512223</span>
+<span class="co">#&gt;  6 08       5758736</span>
+<span class="co">#&gt;  7 09       3565287</span>
+<span class="co">#&gt;  8 10        973764</span>
+<span class="co">#&gt;  9 11        705749</span>
+<span class="co">#&gt; 10 12      21477737</span>
+<span class="co">#&gt; # … with 41 more rows</span>
+
+<span class="va">us_states_map</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 12,999 x 5</span>
+<span class="co">#&gt;         lat      long group fips  abbr </span>
+<span class="co">#&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt;  1 1091779. -1380695. 01.1  01    AL   </span>
+<span class="co">#&gt;  2 1091268. -1376372. 01.1  01    AL   </span>
+<span class="co">#&gt;  3 1091140. -1362998. 01.1  01    AL   </span>
+<span class="co">#&gt;  4 1090940. -1343517. 01.1  01    AL   </span>
+<span class="co">#&gt;  5 1090913. -1341006. 01.1  01    AL   </span>
+<span class="co">#&gt;  6 1090796. -1334480. 01.1  01    AL   </span>
+<span class="co">#&gt;  7 1090235. -1304438. 01.1  01    AL   </span>
+<span class="co">#&gt;  8 1089944. -1289528. 01.1  01    AL   </span>
+<span class="co">#&gt;  9 1089451. -1265304. 01.1  01    AL   </span>
+<span class="co">#&gt; 10 1089305. -1258363. 01.1  01    AL   </span>
+<span class="co">#&gt; # … with 12,989 more rows</span></pre></div>
+<p>The combined spatial datasets can be retrieved with these functions:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu"><a href="../reference/create_map_data.html">create_map_data</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+</div>
+</div>
+<div id="what-the-app-does-1" class="section level1">
+<h1 class="hasAnchor">
+<a href="#what-the-app-does-1" class="anchor"></a>What the App Does</h1>
+<p>The Shiny App consists of two main tabs:</p>
+<div id="tab-1-comparing-confirmed-covid-19-cases-per-100000-population-across-u-s-states" class="section level3">
+<h3 class="hasAnchor">
+<a href="#tab-1-comparing-confirmed-covid-19-cases-per-100000-population-across-u-s-states" class="anchor"></a>Tab 1: Comparing Confirmed Covid-19 Cases (per 100,000 Population) across U.S States</h3>
+<div class="figure">
+<video src="tab1_example.mp4" controls=""><a href="tab1_example.mp4"></a></video><p class="caption">please</p>
+</div>
+<video width="320" height="240" controls><source src="tab1_example.mp4" type="video/mp4"></source></video>
+</div>
+<div id="tab-2-positive-covid-19-cases-found-via-covid-19-testing" class="section level3">
+<h3 class="hasAnchor">
+<a href="#tab-2-positive-covid-19-cases-found-via-covid-19-testing" class="anchor"></a>Tab 2: Positive Covid-19 Cases found via Covid-19 Testing</h3>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
